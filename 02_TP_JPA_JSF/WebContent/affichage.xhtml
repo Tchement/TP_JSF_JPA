@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Affichage des utilisateurs</title>
+</h:head>
+
+<h:body>
+
+	<ui:insert name="header">
+		<ui:include src="/Template/menu.xhtml"></ui:include>
+	</ui:insert>
+
+	<div align="center">
+		<h1>Affichage des utilisateurs</h1>
+
+		<h:form>
+			<p:dataTable var="u" value="#{agentMB.listUser}" rows="10"
+				paginator="true" rowsPerPageTemplate="5,10,15">
+				<p:column headerText="Id">
+					<h:outputText value="#{u.id_utilisateur}" />
+				</p:column>
+
+				<p:column headerText="Nom">
+					<h:outputText value="#{u.nom}" />
+				</p:column>
+
+				<p:column headerText="Prénom">
+					<h:outputText value="#{u.prenom}" />
+				</p:column>
+
+				<p:column headerText="E-Mail">
+					<h:outputText value="#{u.mail}" />
+				</p:column>
+				<p:column headerText="Mot de passe">
+					<h:outputText value="#{u.password}" />
+				</p:column>
+
+				<p:column headerText="Edition">
+					<p:commandButton update="@all" value="Supprimer"
+						action="#{utilisateurMB.suppression}">
+						<f:setPropertyActionListener value="#{u}"
+							target="#{utilisateurMB.utilisateur}" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</div>
+
+
+</h:body>
+
+</html>

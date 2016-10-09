@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+	version="2.2">
+
+	<!-- Règles de navigation -->
+	<navigation-rule>
+
+		<!-- Depuis quelle page la navigation est-elle lancée -->
+		<from-view-id>/login.xhtml</from-view-id>
+
+		<!-- Les cas de navigation -->
+
+		<navigation-case>
+			<from-outcome>succes</from-outcome> <!-- alias de la page 1 -->
+			<to-view-id>/affichage.xhtml</to-view-id> <!-- page correspondant à l'alias toto -->
+		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>echec</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+		</navigation-case>
+
+	</navigation-rule>
+
+</faces-config>
