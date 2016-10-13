@@ -18,6 +18,7 @@ public class UserDaoImpl implements IUserDao {
 	 * 
 	 * @see fr.adaming.dao.IUserDao#getArray()
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Utilisateur> getAllUsersDao() {
 
@@ -90,6 +91,7 @@ public class UserDaoImpl implements IUserDao {
 		 * Créer la requête et l'envoyer
 		 */
 		Query getUserByIdQuery = em.createQuery(req);
+		getUserByIdQuery.setParameter(1, id_user);
 
 		utilisateur = (Utilisateur) getUserByIdQuery.getSingleResult();
 		

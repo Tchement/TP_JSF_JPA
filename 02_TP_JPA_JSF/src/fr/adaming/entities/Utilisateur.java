@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -38,6 +39,9 @@ public class Utilisateur implements Serializable {
 	@Column(name = "password")
 	private String password;
 
+	@ManyToOne
+	private Agent agent;
+
 	/**
 	 * Constructeur vide
 	 */
@@ -47,13 +51,13 @@ public class Utilisateur implements Serializable {
 
 	/**
 	 * Constructeur avec paramètres sans id
+	 * 
 	 * @param nom
 	 * @param prenom
 	 * @param mail
 	 * @param password
 	 */
-	public Utilisateur(String nom, String prenom, String mail,
-			String password) {
+	public Utilisateur(String nom, String prenom, String mail, String password) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
@@ -63,6 +67,7 @@ public class Utilisateur implements Serializable {
 
 	/**
 	 * Constructeur avec paramètres et id
+	 * 
 	 * @param id_utilisateur
 	 * @param nom
 	 * @param prenom
@@ -155,6 +160,21 @@ public class Utilisateur implements Serializable {
 	 */
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	/**
+	 * @return the agent
+	 */
+	public Agent getAgent() {
+		return agent;
+	}
+
+	/**
+	 * @param agent
+	 *            the agent to set
+	 */
+	public void setAgent(Agent agent) {
+		this.agent = agent;
 	}
 
 	/**

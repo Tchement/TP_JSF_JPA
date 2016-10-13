@@ -1,6 +1,5 @@
 package fr.adaming.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import fr.adaming.entities.Utilisateur;

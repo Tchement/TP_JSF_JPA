@@ -4,12 +4,14 @@
 package fr.adaming.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -33,6 +35,9 @@ public class Agent implements Serializable {
 	private String login;
 	@Column(name = "password")
 	private String mdp;
+
+	@OneToMany(mappedBy="agent")
+	private List<Utilisateur> listeUtilisateurs;
 
 	/**
 	 * Constructeur vide
@@ -116,6 +121,21 @@ public class Agent implements Serializable {
 	}
 
 	/**
+	 * @return the listeUtilisateurs
+	 */
+	public List<Utilisateur> getListeUtilisateurs() {
+		return listeUtilisateurs;
+	}
+
+	/**
+	 * @param listeUtilisateurs
+	 *            the listeUtilisateurs to set
+	 */
+	public void setListeUtilisateurs(List<Utilisateur> listeUtilisateurs) {
+		this.listeUtilisateurs = listeUtilisateurs;
+	}
+
+	/**
 	 * Redéfinition de toString
 	 */
 	/*
@@ -125,8 +145,8 @@ public class Agent implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return "Agent [id_agent=" + id_agent + ", login=" + login
-				+ ", mdp=" + mdp + "]";
+		return "Agent [id_agent=" + id_agent + ", login=" + login + ", mdp="
+				+ mdp + "]";
 	}
 
 }
